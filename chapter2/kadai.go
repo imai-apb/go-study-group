@@ -35,7 +35,6 @@ type Number struct {
 // 構造体Numberを3つの要素数から成るスライスにして返却
 // 3つの要素の中身は[{1} {2} {3}]とし、append関数を使用すること
 func Numbers() []Number {
-	// TODO Q2
 	n := make([]Number, 0, 3)
 	for i := 1; i <= 3; i++ {
 		n = append(n, Number{index: i})
@@ -47,7 +46,6 @@ func Numbers() []Number {
 // キーに「yon」が含まれる場合は、キー「yon」に関連する値は除外すること
 // キー「yon」に関しては完全一致すること
 func CalcMap(m map[string]int) int {
-	// TODO Q3
 	r := 0
 	for k, v := range m {
 		if k == "yon" {
@@ -64,7 +62,6 @@ type Model struct {
 
 // 与えられたスライスのModel全てのValueに5を足す破壊的な関数を作成
 func Add(models []Model) {
-	// TODO  Q4
 	for i := range models {
 		models[i].Value += 5
 	}
@@ -74,7 +71,6 @@ func Add(models []Model) {
 // 順序はスライスに格納されている順番のまま返却すること
 // ex) 引数:[]slice{21,21,4,5} 戻り値:[]int{21,4,5}
 func Unique(slice []int) []int {
-	// TODO Q5
 	m := make(map[int]int)
 	r := []int{}
 	for _, v := range slice {
@@ -89,7 +85,11 @@ func Unique(slice []int) []int {
 
 // 連続するフィボナッチ数(0, 1, 1, 2, 3, 5, ...)を返す関数(クロージャ)を返却
 func Fibonacci() func() int {
-	// TODO Q6 オプション
-
-	return nil
+	a := 0
+	b := 1
+	return func() int {
+		c := a
+		a, b = b, b+a
+		return c
+	}
 }
